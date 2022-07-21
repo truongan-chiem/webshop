@@ -1,0 +1,226 @@
+.profile {
+  margin-top: $header-height;
+  width: 100%;
+  @include flex(center, center);
+  @include tablet {
+    margin-top: $header-tablet-height;
+  }
+
+  @include mobile {
+    margin-top: $header-mobile-height;
+  }
+
+  &__form {
+    box-shadow: $box-shadow;
+    width: 30%;
+    min-height: 65vh;
+    padding: 1rem 2rem;
+    border: 2px solid $main-color;
+    border-radius: 10px;
+    margin-right: 1rem;
+    transition: all 0.4s ease-in-out;
+
+    @include flex(center, center);
+    flex-direction: column;
+
+    &__title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: $main-color;
+      margin-bottom: 1rem;
+
+      @include tablet {
+        font-size: 1.75rem;
+      }
+    }
+
+    &__content {
+      padding: 1rem;
+      width: 100%;
+
+      &__item {
+        margin-bottom: 10px;
+
+        &__input {
+          @include flex(center, space-between);
+          position: relative;
+          label {
+            position: absolute;
+            top: 0;
+            left: 5px;
+            transform: translateY(50%);
+            padding: 0 5px;
+            pointer-events: none;
+            color: $txt-second-color;
+            font-size: 1.5rem;
+            font-weight: normal;
+            background-color: $btn-main-color;
+            transition: all 0.3s ease-in-out;
+          }
+          input {
+            outline: none;
+            padding: 1rem;
+            border: 1px solid $txt-second-color;
+            border-radius: 10px;
+            font-size: 1.25rem;
+            flex-grow: 1;
+            height: 50px;
+            @include tablet {
+              font-size: 1rem;
+            }
+            &:focus,
+            &:valid {
+              border: 1px solid $main-color;
+              + label {
+                transform: translateY(-50%);
+                font-size: 1rem;
+                color: $main-color;
+              }
+            }
+          }
+          @include tablet {
+            label {
+              font-size: 1rem;
+            }
+            input {
+              font-size: 1rem;
+              padding-left: 0;
+              width: 100%;
+            }
+          }
+        }
+        &__error {
+          font-size: 1rem;
+          color: red;
+          margin: 1rem 0;
+          height: 15px;
+          @include tablet {
+            font-size: 0.75rem;
+            margin: 0;
+          }
+        }
+      }
+      &__forget {
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+      &__btn {
+        @include flex(center, center);
+        button {
+          border: 1px solid $main-color;
+          border-radius: 8px;
+          font-size: 1.5rem;
+          @include tablet {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+    &__anotherlogin {
+      color: $main-color;
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    &__icon {
+      font-size: 2rem;
+      width: 100%;
+      @include flex(center, flex-end);
+      .google {
+        color: #d85448;
+      }
+      .facebook {
+        color: #3d5799;
+      }
+      .linkedin {
+        color: #0077b5;
+      }
+    }
+    &__icon > i {
+      margin-left: 10px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &.changeSignup {
+      transform: translateX(100%);
+      visibility: hidden;
+      transition: transform 0.4s ease;
+      .profile__form__content__item__input > label {
+        opacity: 0;
+      }
+    }
+  }
+  &__right {
+    position: relative;
+    z-index: 10;
+    box-shadow: $box-shadow;
+    width: 30%;
+    min-height: 65vh;
+    padding: 1rem 2rem;
+    border: 2px solid $main-color;
+    border-radius: 10px;
+    background-image: linear-gradient(95deg, white, $main-color);
+    @include flex(center, space-between);
+    flex-direction: column;
+    &__title {
+      text-align: center;
+      position: absolute;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: $main-color;
+      transform: translateY(0);
+      transition: transform 0.3s ease;
+      &.change {
+        transform: translateY(-100%);
+        visibility: hidden;
+      }
+    }
+    &__image {
+      width: 100%;
+      height: 200px;
+      margin: auto;
+      @include flex(center, center);
+      img {
+        height: 100%;
+      }
+    }
+    &__btn {
+      @include flex(center, center);
+      button {
+        font-size: 1.1rem;
+        border-radius: 10px;
+        border: 2px solid $main-color;
+        background-color: transparent;
+        color: $main-color;
+      }
+      :active {
+        background-color: $main-color;
+        color: $txt-white;
+        border-radius: 10px;
+        border: none;
+      }
+    }
+  }
+}
+.signup {
+  position: absolute;
+  top: $header-height;
+  left: 25%;
+  transform: translateX(-18%);
+
+  &.changeLogin {
+    transform: translateX(60%);
+    visibility: hidden;
+    transition: transform 0.4s ease;
+  }
+}
+@keyframes inputName {
+  0% {
+    transform: translate(137px, 0px);
+  }
+  100% {
+    transform: translate(137px, -7px);
+  }
+}

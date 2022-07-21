@@ -1,0 +1,102 @@
+.cart {
+  @include flex(flex-start, flex-start);
+
+  @include mobile {
+    flex-direction: column;
+  }
+  &__info {
+    padding: 1rem;
+    width: 35%;
+    box-shadow: $box-shadow;
+    margin-right: 30px;
+    position: sticky;
+    top: calc(#{$header-shrink-height} +20px);
+
+    @include mobile {
+      width: 100%;
+      margin-right: 0;
+      position: unset;
+    }
+
+    &__txt {
+      & > * {
+        margin-bottom: 10px;
+      }
+      p {
+        font-size: 1.25rem;
+      }
+
+      &__price {
+        @include flex(center, space-between);
+
+        font-size: 1.25rem;
+        padding: 10px 0;
+
+        span:nth-child(2) {
+          font-size: 2rem;
+          font-weight: 600;
+          color: $main-color;
+        }
+      }
+    }
+    &__btn > * {
+      margin-bottom: 10px;
+    }
+  }
+  &__list {
+    flex-grow: 1;
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  &__item {
+    @include flex(center, flex-start);
+    margin-bottom: 10px;
+    padding: 2rem;
+    box-shadow: $box-shadow;
+
+    &__image {
+      margin-right: 40px;
+      img {
+        height: 150px;
+      }
+      @include mobile {
+        margin-right: 8px;
+        img {
+          height: 120px;
+        }
+      }
+    }
+
+    &__info {
+      @include flex(center, space-between);
+      flex-grow: 1;
+
+      &__txt {
+        font-size: 1.5rem;
+        font-weight: normal;
+      }
+      &__price {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: $main-color;
+      }
+      &__del {
+        font-size: 1.75rem;
+        cursor: pointer;
+        color: $main-color;
+      }
+      @include mobile {
+        @include flex(flex-start, center);
+        flex-direction: column;
+        &__txt,
+        &__price,
+        &__quantity {
+          margin-bottom: 10px;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

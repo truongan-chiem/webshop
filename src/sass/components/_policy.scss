@@ -1,0 +1,30 @@
+.policy-cart {
+  @include flex(center, flex-start);
+  padding: 20px 20px 20px 0;
+  box-shadow: $box-shadow;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+  &:hover {
+    transform: translateY(-20px);
+  }
+
+  &__icon {
+    @include flex(center, center);
+    color: $main-color;
+    width: 30%;
+    i {
+      font-size: 2rem;
+    }
+  }
+  &__info {
+    &__name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    &__description {
+      font-size: 1rem;
+      color: $txt-second-color;
+    }
+  }
+}

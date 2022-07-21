@@ -1,0 +1,164 @@
+.product {
+  @include flex(flex-start, flex-start);
+  @include mobile {
+    flex-direction: column;
+  }
+
+  &__images {
+    @include flex(flex-start, flex-start);
+    width: 60%;
+    flex-wrap: wrap;
+
+    @include tablet {
+      width: 80%;
+    }
+    @include mobile {
+      width: 100%;
+    }
+
+    &__list {
+      width: 20%;
+      &__item {
+        cursor: pointer;
+      }
+    }
+    &__main {
+      flex-grow: 1;
+      position: relative;
+      padding-top: 100%;
+      img {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        height: 100%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+  &__info {
+    flex-grow: 1;
+    position: sticky;
+    top: $header-shrink-height;
+    padding-top: 1rem;
+
+    @include mobile {
+      position: relative;
+      top: unset;
+    }
+
+    &__title {
+      font-size: 2rem;
+      font-weight: normal;
+    }
+    &__item {
+      margin-top: 2rem;
+      &__price {
+        color: $main-color;
+        font-size: 1.75rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      &__title {
+        font-size: 1.5rem;
+        font-weight: normal;
+        margin: 10px 0;
+      }
+      &__list {
+        @include flex(flex, flex-start);
+        &__item {
+          @include flex(center, center);
+          width: 46px;
+          height: 46px;
+          border-radius: 50%;
+          border: 1px solid $txt-second-color;
+          margin-right: 10px;
+          cursor: pointer;
+
+          &.active {
+            border: 2px solid $main-color;
+          }
+
+          .circle {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+          }
+          &__size {
+            @include flex(center, center);
+            text-transform: uppercase;
+            font-weight: 600;
+          }
+        }
+      }
+      &__quantity {
+        @include flex(center, flex-start);
+        &__btn {
+          height: 25px;
+          width: 25px;
+          border: 2px solid $txt-second-color;
+          @include flex(center, center);
+          font-size: 1rem;
+          font-weight: 600;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        &__input {
+          @include flex(center, center);
+          height: 25px;
+          width: 70px;
+          border-top: 2px solid $txt-second-color;
+          border-bottom: 2px solid $txt-second-color;
+        }
+      }
+      &__buttonArea {
+        @include mobile {
+          width: 100vw;
+          @include flex(center, center);
+        }
+        button {
+          margin: 1rem 2rem 0 0;
+        }
+      }
+    }
+  }
+}
+
+.product-description {
+  @include mobile {
+    display: none;
+  }
+  &.mobile {
+    display: none;
+    @include mobile {
+      display: block;
+    }
+  }
+  padding: 2rem 2rem 3rem;
+  width: 100%;
+  position: relative;
+  &__title {
+    text-transform: capitalize;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+    margin: 2rem 0;
+  }
+
+  &__content {
+    height: 300px;
+    overflow: hidden;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    text-align: justify;
+    &.extend {
+      height: max-content;
+    }
+  }
+  &__toggle {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
